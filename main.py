@@ -28,13 +28,12 @@ def main():
     
     # Inicializar o gerenciador de estados
     state_manager = StateManager(MenuState(None))
+    # garantir que o estado atual aponte para o manager
     state_manager.current_state.manager = state_manager
-    
-    running = True
-
-    state_manager = StateManager(MenuState(None))
-    state_manager.current_state.manager = state_manager
+    # definir explicitamente o estado inicial com o manager presente
     state_manager.set_state(MenuState(state_manager))
+
+    running = True
 
     while running:
         dt = clock.tick(settings.FPS) / 1000 
